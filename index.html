@@ -7,15 +7,120 @@
     <title>Pokémon</title>
 </head>
 <link rel="stylesheet" href="index.css">
+
 <body>
     <div class="header">
         <div class="logo">
             <h1>Welcome to Pokémon world</h1>
         </div>
         <div class="banner">
-            <h5 style="margin-right: 10px;">Hi KO</h5>
+            <h5>Hi KO</h5>
+        </div>
+    </div>
+
+    <div class="home" id="home">
+        <div class="region" id="region">
+            <button>
+                <h3>All Pokémon</h3>
+            </button>
+            <button>
+                <h3>Kanto</h3>
+            </button>
+            <button>
+                <h3>Johto</h3>
+            </button>
+            <button>
+                <h3>Hoenn</h3>
+            </button>
+            <button>
+                <h3>Sinnoh</h3>
+            </button>
+            <button>
+                <h3>Unova</h3>
+            </button>
+            <button>
+                <h3>Kalos</h3>
+            </button>
+            <button>
+                <h3>Alola</h3>
+            </button>
+            <button>
+                <h3>Galar</h3>
+            </button>
+            <button>
+                <h3>Paldea</h3>
+            </button>
+        </div>
+        <div class="main" id="main">
+            <table>
+                <thead style="background: blue; color: aliceblue;">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th colspan="9">SWITCH</th>
+                        <th colspan="8">3DS</th>
+                    </tr>
+                    <tr>
+                        <th>NO</th>
+                        <th>Pokémon</th>
+                        <TH>Violet <p></p></TH>
+                        <TH>Scarlet <p></p></TH>
+                        <TH>Legends: Arceus <p></p></TH>
+                        <TH>Brilliant Diamond <p></p></TH>
+                        <TH>Shining Pearl <p></p></TH>
+                        <TH>Sword <p></p></TH>
+                        <TH>Shield <p></p></TH>
+                        <TH>Let's Go, Pikachu <p></p></TH>
+                        <TH>Let's Go, Eevee <p></p></TH>
+                        <th>Ultra Sun <p>123456</p></th>
+                        <th>Ultra Moon <p>123456</p></th>
+                        <th>Sun <p>123456</p></th>
+                        <th>Moon <p>123456</p></th>
+                        <th>Omega Ruby <p>123456</p></th>
+                        <th>Alpha Sapphire <p>123456</p></th>
+                        <th>X <p>123456</p></th>
+                        <th>Y <p>123456</p></th>
+                    </tr>
+                </thead>
+                <tbody id="pokemonList">
+                    <!-- Dữ liệu Pokémon sẽ được thêm vào đây -->
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
+<script>
+    // Lấy dữ liệu Pokémon từ file JSON
+    fetch('pokemonName.json')
+        .then(response => response.json())
+        .then(pokemonData => {
+            // Lấy element tbody để chèn dữ liệu
+            const pokemonList = document.getElementById('pokemonList');
 
+            // Duyệt qua danh sách Pokémon
+            pokemonData.forEach(pokemon => {
+                // Tạo một dòng (<tr>) cho mỗi Pokémon
+                const row = document.createElement('tr');
+
+                // Tạo ô (<td>) cho ID
+                const idCell = document.createElement('td');
+                idCell.textContent = pokemon.id; // Lấy ID từ pokemon.id
+                row.appendChild(idCell);
+
+                // Tạo ô (<td>) cho tên Pokémon
+                const nameCell = document.createElement('td');
+                nameCell.textContent = pokemon.name; // Lấy tên từ pokemon.name
+                row.appendChild(nameCell);
+
+                // Tạo các ô trống cho các cột game
+                for (let i = 0; i < 17; i++) {
+                    const emptyCell = document.createElement('td');
+                    row.appendChild(emptyCell);
+                }
+
+                // Thêm dòng vào tbody
+                pokemonList.appendChild(row);
+            });
+        });
+</script>
 </html>

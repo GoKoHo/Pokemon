@@ -21,3 +21,23 @@
     margin-right: 10px;
     color: blue;
 }
+
+.home {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+
+.region {
+    width: 8%;
+    button  {
+        width: 100%;
+        border: none;
+        background: none;
+    }
+}
+
+.main {
+    width: 92%;
+}
+
